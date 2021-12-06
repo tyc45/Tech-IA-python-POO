@@ -48,13 +48,13 @@ class TestVehicle:
 #         pass
 
 class TestSeniorDealer:
-    def test_grant_discount(self, senior_dealer_test: SeniorDealer, vehicle_test: Vehicle, 1):
+    def test_grant_discount(self, senior_dealer_test: SeniorDealer, vehicle_test: Vehicle):
         assert senior_dealer_test.grant_discount(vehicle_test, 1).taxed_price == 16200
     
-    def test_grant_discount_two(self, senior_dealer_test: SeniorDealer, vehicle_test: Vehicle, 2):
+    def test_grant_discount_two(self, senior_dealer_test: SeniorDealer, vehicle_test: Vehicle):
         assert senior_dealer_test.grant_discount(vehicle_test, 1).taxed_price == 14400
     
-    def test_grant_discount_three(self, senior_dealer_test: SeniorDealer, vehicle_test: Vehicle, 3):
+    def test_grant_discount_three(self, senior_dealer_test: SeniorDealer, vehicle_test: Vehicle):
         assert senior_dealer_test.grant_discount(vehicle_test, 1).taxed_price == 12600
 
 

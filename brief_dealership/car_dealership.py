@@ -12,51 +12,51 @@ class Vehicle:
 
     @property
     def color(self):
-        return self.color
+        return self._color
     
     @color.setter
     def color(self, color):
-        self.color = color
+        self._color = color
     
     @property
     def brand(self):
-        return self.brand
+        return self._brand
     
     @brand.setter
     def brand(self, brand):
-        self.brand = brand
+        self._brand = brand
     
     @property
     def model(self):
-        return self.model
+        return self._model
     
     @model.setter
     def model(self, model):
-        self.model = model
+        self._model = model
 
     @property
     def pre_tax_price(self):
-        return self.pre_tax_price
+        return self._pre_tax_price
     
     @pre_tax_price.setter
     def pre_tax_price(self, pre_tax_price):
-        self.pre_tax_price = pre_tax_price
+        self._pre_tax_price = pre_tax_price
 
     @property
     def taxed_price(self):
-        return self.taxed_price
+        return self._taxed_price
     
     @taxed_price.setter
     def taxed_price(self, taxed_price):
-        self.taxed_price = taxed_price
+        self._taxed_price = taxed_price
 
     @property
     def applicable_discount(self):
-        return self.applicable_discount
+        return self._applicable_discount
     
     @applicable_discount.setter
     def applicable_discount(self, applicable_discount):
-        self.applicable_discount = applicable_discount
+        self._applicable_discount = applicable_discount
 
 
     # Applies discount by how_many times only if commanded by a SeniorDealer 
@@ -72,19 +72,19 @@ class Car(Vehicle):
 
     @property
     def auto_gearbox(self):
-        return self.auto_gearbox
+        return self._auto_gearbox
     
     @auto_gearbox.setter
     def auto_gearbox(self, auto_gearbox):
-        self.auto_gearbox  = auto_gearbox
+        self._auto_gearbox  = auto_gearbox
 
     @property
     def driving_wheels(self):
-        return self.driving_wheels
+        return self._driving_wheels
     
     @driving_wheels.setter
     def driving_wheels(self, driving_wheels):
-        self.driving_wheels  = driving_wheels
+        self._driving_wheels  = driving_wheels
 
 
 @dataclass
@@ -93,11 +93,11 @@ class Truck(Vehicle):
     
     @property
     def weight(self):
-        return self.weight
+        return self._weight
     
     @weight.setter
     def weight(self, weight):
-        self.weight  = weight
+        self._weight  = weight
 
 
 @dataclass
@@ -106,11 +106,11 @@ class Bike(Vehicle):
     
     @property
     def engine_displacement(self):
-        return self.engine_displacement
+        return self._engine_displacement
     
     @engine_displacement.setter
     def engine_displacement(self, engine_displacement):
-        self.engine_displacement  = engine_displacement
+        self._engine_displacement  = engine_displacement
 
 
 @dataclass
@@ -120,19 +120,19 @@ class Dealer:
 
     @property
     def name(self):
-        return self.name
+        return self._name
     
     @name.setter
     def name(self, name):
-        self.name  = name
+        self._name  = name
 
     @property
     def sales(self):
-        return self.sales
+        return self._sales
     
     @sales.setter
     def sales(self, sales):
-        self.sales  = sales
+        self._sales  = sales
     
     def call_for_discount(name):
         pass
@@ -153,27 +153,27 @@ class Sale:
 
     @property
     def vehicle(self):
-        return self.vehicle
+        return self._vehicle
     
     @vehicle.setter
     def vehicle(self, vehicle: Vehicle):
-        self.vehicle  = vehicle
+        self._vehicle  = vehicle
 
     @property
     def dealer(self):
-        return self.dealer
+        return self._dealer
     
     @dealer.setter
     def dealer(self, dealer):
-        self.dealer  = dealer
+        self._dealer  = dealer
 
     @property
     def seniorDealer(self):
-        return self.seniorDealer
+        return self._seniorDealer
     
     @seniorDealer.setter
     def seniorDealer(self, seniorDealer):
-        self.seniorDealer  = seniorDealer
+        self._seniorDealer  = seniorDealer
 
     def export_to_pdf(self):
         pass
@@ -188,36 +188,36 @@ class Dealership:
 
     @property
     def adress(self):
-        return self.adress
+        return self._adress
     
     @adress.setter
     def adress(self, adress):
-        self.adress  = adress
+        self._adress  = adress
     
     @property
     def siret_number(self):
-        return self.siret_number
+        return self._siret_number
     
     @siret_number.setter
     def siret_number(self, siret_number):
-        self.siret_number  = siret_number
+        self._siret_number  = siret_number
     
     @property
     def inventory(self):
-        return self.inventory
+        return self._inventory
     
     @inventory.setter
     def inventory(self, inventory):
 
-        self.inventory  = inventory
+        self._inventory  = inventory
     
     @property
     def dealers(self):
-        return self.dealers
+        return self._dealers
     
     @dealers.setter
     def dealers(self, dealers):
-        self.dealers  = dealers
+        self._dealers  = dealers
 
     def vehicles_by_brand(self, brand):
         return range(where(self.inventory) == brand)
