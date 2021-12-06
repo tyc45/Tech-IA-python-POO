@@ -1,0 +1,7 @@
+{
+    "python.testing.pytestArgs": [
+        "brief_dealership"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
+}

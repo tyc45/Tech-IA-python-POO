@@ -149,7 +149,7 @@ class SeniorDealer(Dealer):
 class Sale:
     vehicle: Vehicle
     dealer: Dealer
-    seniorDealer: None
+    seniorDealer = None
 
     @property
     def vehicle(self):
