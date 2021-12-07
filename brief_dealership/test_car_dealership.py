@@ -25,7 +25,6 @@ def car_list():
         Vehicle("Bleu","Renault","Megane", 25000, 26000, 0.20),
         Vehicle("Gris","Audi","A3", 40000, 45000, 0.30)
     ]
-    print(temp)
     return temp
 
 @pytest.fixture
