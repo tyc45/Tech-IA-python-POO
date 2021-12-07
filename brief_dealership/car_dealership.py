@@ -3,6 +3,7 @@ from dataclasses import dataclass
 
 @dataclass
 class Vehicle:
+    
     color: str
     brand: str
     model: str
@@ -61,8 +62,8 @@ class Vehicle:
 
     # Applies discount by how_many times only if commanded by a SeniorDealer 
     def apply_discount(self, dealer, how_many = 1) -> None:
-        if isinstance(dealer, SeniorDealer):
-            self.taxed_price = self.taxed_price - (self.taxed_price * self.applicable_discount * how_many)
+        if dealer.isSenior:
+            self.taxed_price -=self.taxed_price * self.applicable_discount * how_many
         else: print("You can't apply a discount if you're not a senior dealer!")
 
 @dataclass
@@ -117,6 +118,7 @@ class Bike(Vehicle):
 class Dealer:
     name: str
     sales: list
+    isSenior: bool
 
     @property
     def name(self):
@@ -133,23 +135,33 @@ class Dealer:
     @sales.setter
     def sales(self, sales):
         self._sales  = sales
+
+    @property
+    def isSenior(self):
+        return self._isSenior
     
+    @isSenior.setter
+    def isSenior(self, isSenior):
+        self._isSenior  = isSenior
+
     def call_for_discount(name):
         pass
 
-
-@dataclass
-class SeniorDealer(Dealer):
     def grant_discount(self, vehicle: Vehicle, num: int) -> Vehicle:
-        vehicle.apply_discount(self, num)
-        return vehicle
+        if self.isSenior:
+            vehicle.apply_discount(self, num)
+            print(f"This {vehicle.model} now costs {vehicle.taxed_price}.")
+            return vehicle
+        else: 
+            print("You are not allowed to do that!")
+            return vehicle
 
 
 @dataclass
 class Sale:
     vehicle: Vehicle
     dealer: Dealer
-    seniorDealer = None
+    seniorDealer: bool = False
 
     @property
     def vehicle(self):
@@ -220,7 +232,11 @@ class Dealership:
         self._dealers  = dealers
 
     def vehicles_by_brand(self, brand):
-        return range(where(self.inventory) == brand)
+        count = 0
+        for elmt in self.inventory:
+            if brand.lower() == elmt.brand.lower():
+                count += 1
+        return count
 
     def add_vehicle(self, vehicle):
         if isinstance(vehicle, Vehicle): self.inventory.append(vehicle)
